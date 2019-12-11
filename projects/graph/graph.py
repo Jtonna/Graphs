@@ -26,7 +26,13 @@ class Graph:
         else:
             print error
         """
-
+        print("-----")
+        if v1 and v2 in self.vertices:
+            print(f"Found vertex:{v1}, attempting to add {v2} to the set")
+            self.vertices[v1].add(v2)
+            print("    Addition successful")
+        else:
+            print(f"Sorry, we cant add an edge based on vertice's {v1} & {v2}")
         
 
     def get_neighbors(self, vertex_id):
