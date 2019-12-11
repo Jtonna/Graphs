@@ -33,13 +33,20 @@ class Graph:
             print("    Addition successful")
         else:
             print(f"Sorry, we cant add an edge based on vertice's {v1} & {v2}")
-        
 
     def get_neighbors(self, vertex_id):
         """
         Get all neighbors (edges) of a vertex.
+
+        If vertex_id is in self.vertices
+            return vertices[vertex_id]
+
         """
-        pass  # TODO
+        if vertex_id in self.vertices:
+            print(f"looking for vertex {vertex_id}'s edges, which should be {self.vertices[vertex_id]}")
+            return self.vertices[vertex_id]
+        else:
+            print(f"Error finding {vertex_id}. This value may not exist")
 
     def bft(self, starting_vertex):
         """
@@ -116,6 +123,15 @@ if __name__ == '__main__':
         {1: {2}, 2: {3, 4}, 3: {5}, 4: {6, 7}, 5: {3}, 6: {3}, 7: {1, 6}}
     '''
     print(graph.vertices)
+
+    ''' should print:
+        {3, 4}
+        {5}
+        error
+    '''
+    print(graph.get_neighbors(2))
+    print(graph.get_neighbors(3))
+    print(graph.get_neighbors(30))
 
     '''
     Valid BFT paths:
