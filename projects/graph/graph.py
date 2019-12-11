@@ -13,13 +13,21 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        # vertices is a dict, so we can call it and pass in the vertex_id and add a new set
+        self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
+
+        plan -- 
+        if v1 and v2 in vertices:
+            vertices v1 set add v2
+        else:
+            print error
         """
-        pass  # TODO
+
+        
 
     def get_neighbors(self, vertex_id):
         """
