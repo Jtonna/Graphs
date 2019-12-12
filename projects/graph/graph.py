@@ -52,8 +52,45 @@ class Graph:
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
+
+        plan -- 
+        make a new empty queue
+        add the starting vert id to the queue
+        make an empty set to store a list of visited verts
+        while the queue isnt empty
+            remove the remove the first vert from the queue
+            if the vert has not been visited
+                add it to the set of visitied verts
+                add its neighbors to the queue
         """
-        pass  # TODO
+
+        # make a new queue & pass it the starting vert
+        the_queue = Queue()
+        the_queue.enqueue(starting_vertex)
+
+        # create a new set to keep track of visited verts
+        visited_verts = set()
+
+        print(f"BFT ----")
+        # If there is something in the queue
+        while the_queue.size() > 0:
+            print(f"    queue has {the_queue.size()}")
+            # Remove the starting vertex from queue
+            vert = the_queue.dequeue()
+            print(f"        now it has {the_queue.size()}")
+
+            # If the starting vert is not in the visited verts set
+            if vert not in visited_verts:
+                print(f"    vertex {vert} is not in visited_verts, so we are going to add it")
+                # add it to the set
+                visited_verts.add(vert)
+                
+                # Add the neighbors of the current vert to the queue
+                print(f"    We are now going to pass the vert {vert}, to get_neighbors() and add the neighbors to the queue")
+                for next_vertex in self.vertices[vert]:
+                    print(f"    neighbor of {vert} found, enqueueing {next_vertex}")
+                    the_queue.enqueue(next_vertex)
+
 
     def dft(self, starting_vertex):
         """
@@ -131,7 +168,7 @@ if __name__ == '__main__':
     '''
     print(graph.get_neighbors(2))
     print(graph.get_neighbors(3))
-    print(graph.get_neighbors(30))
+    print(graph.get_neighbors(1))
 
     '''
     Valid BFT paths:
