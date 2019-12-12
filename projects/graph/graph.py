@@ -87,9 +87,9 @@ class Graph:
                 
                 # Add the neighbors of the current vert to the queue
                 print(f"    We are now going to pass the vert {vert}, to get_neighbors() and add the neighbors to the queue")
-                for next_vertex in self.vertices[vert]:
-                    print(f"    neighbor of {vert} found, enqueueing {next_vertex}")
-                    the_queue.enqueue(next_vertex)
+                for neighbors in self.vertices[vert]:
+                    print(f"    neighbor of {vert} found, enqueueing {neighbors}")
+                    the_queue.enqueue(neighbors)
 
     def dft(self, starting_vertex):
         """
@@ -118,20 +118,31 @@ class Graph:
                 print(f"found a vert that we havent seen before {vert}, adding it to the list of visited verts now")
                 visited_verts.add(vert)
 
-                for next_vertex in self.vertices[vert]:
-                    print(f"    pushing -> {next_vertex} to the stack")
-                    the_stack.push(next_vertex)
+                # Add neighbors to the top of the stack
+                for neighbors in self.vertices[vert]:
+                    print(f"    pushing -> {neighbors} to the stack")
+                    the_stack.push(neighbors)
 
-
-
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited=None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
 
         This should be done using recursion.
+
+        plan -
+
+        if visited is none:
+            visitied = set()
+        
+        add starting_vert to the visited set
+
+        for each child_vert of the current vert
+            if the child vers has not been visited
+                pass the child vert to dft_recursive with the visited set
+
         """
-        pass  # TODO
+        
 
     def bfs(self, starting_vertex, destination_vertex):
         """
