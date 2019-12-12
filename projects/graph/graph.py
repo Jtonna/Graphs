@@ -154,8 +154,6 @@ class Graph:
             if child_vert not in visited:
                 self.dft_recursive(child_vert, visited)
 
-        
-
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
