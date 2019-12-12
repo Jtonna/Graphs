@@ -91,13 +91,34 @@ class Graph:
                     print(f"    neighbor of {vert} found, enqueueing {next_vertex}")
                     the_queue.enqueue(next_vertex)
 
-
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
+        
+        plan -- 
+        make a new empty stack
+        add the starting vert id to the qstack
+        make an empty set to store a list of visited verts
+        while the stack isnt empty
+            remove the remove the first vert from the qstack
+            if the vert has not been visited
+                add it to the set of visitied verts
+                add its neighbors to the qstack
         """
-        pass  # TODO
+        the_stack = Stack()
+        the_stack.push(starting_vertex)
+        visited_verts = set()
+
+        while the_stack.size() > 0:
+            vert = the_stack.pop()
+            if vert not in visited_verts:
+                visited_verts.add(vert)
+
+                for next_vertex in self.vertices[vert]:
+                    the_stack.push(next_vertex)
+
+
 
     def dft_recursive(self, starting_vertex):
         """
