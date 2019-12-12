@@ -159,8 +159,39 @@ class Graph:
         Return a list containing the shortest path from
         starting_vertex to destination_vertex in
         breath-first order.
+
+
+        plan --
+
+        new queue
+        add starting vert to queue
+        make a set for visited verts
+        
+        while set is not empty
+            deque the vert
+            if this vert has not been visited
+                add it to the set
+                add neighbors to the back of the queue
+
         """
-        pass  # TODO
+        the_queue = Queue()
+        the_queue.enqueue([starting_vertex])
+        visited_verts = set()
+
+        while the_queue.size() > 0:
+            the_path_2destination = the_queue.dequeue()
+            vertex = the_path_2destination[-1]
+
+            if vertex not in visited_verts:
+                if vertex == destination_vertex:
+                    return the_path_2destination
+            
+            visited_verts.add(vertex)
+
+            for next_vert in self.vertices[vertex]:
+                new_path = list(the_path_2destination)
+                new_path.append(next_vert)
+                the_queue.enqueue(new_path)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
