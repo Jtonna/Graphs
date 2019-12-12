@@ -111,11 +111,15 @@ class Graph:
         visited_verts = set()
 
         while the_stack.size() > 0:
+            print(f"Stack size size is > 0")
             vert = the_stack.pop()
+
             if vert not in visited_verts:
+                print(f"found a vert that we havent seen before {vert}, adding it to the list of visited verts now")
                 visited_verts.add(vert)
 
                 for next_vertex in self.vertices[vert]:
+                    print(f"    pushing -> {next_vertex} to the stack")
                     the_stack.push(next_vertex)
 
 
