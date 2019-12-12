@@ -136,12 +136,24 @@ class Graph:
             visitied = set()
         
         add starting_vert to the visited set
+        print the current vert
 
         for each child_vert of the current vert
             if the child vers has not been visited
                 pass the child vert to dft_recursive with the visited set
 
         """
+
+        if visited is None:
+            visited = set()
+        
+        visited.add(starting_vertex)
+        print(starting_vertex)
+
+        for child_vert in self.vertices[starting_vertex]:
+            if child_vert not in visited:
+                self.dft_recursive(child_vert, visited)
+
         
 
     def bfs(self, starting_vertex, destination_vertex):
