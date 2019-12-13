@@ -219,15 +219,18 @@ class Graph:
                 new_path.append(next_vert)
                 the_stack.push(new_path)
 
-    def dfs_recursive(self, starting_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex, visited=None):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
         depth-first order.
 
         This should be done using recursion.
+
+        plan --
         """
-        pass  # TODO
+        
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
