@@ -1,4 +1,26 @@
-from util import Stack, Queue  # These may come in handy
+# Create the queue
+class Queue():
+    def __init__(self):
+        self.queue = []
+    def enqueue(self, value):
+        self.queue.append(value)
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+    def size(self):
+        return len(self.queue)
+
+# Import the word list
+f = open('words.txt', 'r')
+words = f.read().split("\n")
+f.close()
+
+word_set = set()
+for word in words:
+    word_set.add(word.lower())
+
 '''
 Given two wods (begin_word and end_word), and a dictionary's word list,
 return the shortest transformation sequence from being_word to end_word such that:
