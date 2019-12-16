@@ -22,3 +22,24 @@ end_word = "boat"
 return ['sail', 'bail', 'boil', 'ball', 'bolt', 'boat']
 
 '''
+
+# 3 Steps
+# Build our graph
+# Words are "nodes" aka Vertex's & one-letter-apart is the edge
+# Do a BFS from start_word to end_word
+
+def find_ladders(begin_word, end_word):
+    # BFS
+    # Create a queue
+    q = Queue()
+    # Enqueue a path to the starting word
+    q.enqueue( [begin_word] )
+    # Create a visited set
+    visited = set()
+    # While the queue is not empty
+        # Dequeue the next path
+        # Grab the last word from the path
+        # Check if the word is end_word if not return path
+        # if the word has not been visited
+            # mark it as visited
+            # enqueue a path to each neighbor
