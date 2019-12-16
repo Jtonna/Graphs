@@ -21,7 +21,7 @@ class Queue():
 
 class Graph:
     def __init__(self):
-        vertices = {}
+        self.vertices = {}
     
     def add_vertex(self, vertex_id):
         if vertex_id not in self.vertices:
@@ -45,5 +45,30 @@ def earliest_ancestor(ancestors, starting_node):
         graph.add_vertex(pair[0])
         graph.add_vertex(pair[1])
 
-        # Build the edges in reverse to create a bi directional relationship between the data
+        # Build the edges in reverse because we want a directional link from the kids to the parents.
         graph.add_edges(pair[1], pair[0])
+
+    # We need a queue because we are doing a BFS, as well as enqueue the starting node
+    q = Queue()
+    q.enqueue([starting_node])
+
+    # We need to keep track of the longest path so we know when we are done
+    max_path_length = 1
+    earliest_ancestor = -1
+
+    #
+    while q.size() > 0:
+        path = q.dequeue()
+        vertex = path[-1]
+
+        # We need to check to se if there is two paths with the same length
+        if (len(path) >= max_path_length and vertex < earliest_ancestor) or (len(path) > max_path_length):
+            earliest_ancestor = vertex
+            max_path_length = len(path)
+
+        for neighbor in graph.vertices[vertex]:
+            path_copy = list(path)
+            path_copy.append(neighbor)
+            q.enqueue(path_copy)
+    
+    return earliest_ancestor
