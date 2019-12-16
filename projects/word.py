@@ -37,9 +37,20 @@ def find_ladders(begin_word, end_word):
     # Create a visited set
     visited = set()
     # While the queue is not empty
+    while q.size() > 0:
         # Dequeue the next path
-        # Grab the last word from the path
-        # Check if the word is end_word if not return path
-        # if the word has not been visited
+        path = q.dequeue()
+        # Grab the last word (vertex) from the path
+        v = path[-1]
+        # if v (the word) has not been visited
+        if v not in visited:
+            # Check if the word is end_word if not return path
+            if v == end_word:
+                return path
             # mark it as visited
+            visited.add(v)
             # enqueue a path to each neighbor
+            for neighbor in get_neighbors(v):
+                path_copy = path.copy()
+                path_copy.append(neighbor)
+                q.enqueue(path_copy)
