@@ -1,3 +1,4 @@
+from util import Stack, Queue  # These may come in handy
 '''
 Given two wods (begin_word and end_word), and a dictionary's word list,
 return the shortest transformation sequence from being_word to end_word such that:
@@ -51,6 +52,8 @@ def find_ladders(begin_word, end_word):
             visited.add(v)
             # enqueue a path to each neighbor
             for neighbor in get_neighbors(v):
-                path_copy = path.copy()
+                path_copy = path.copy() # We are going to use shallow copy so we dont modify the original
                 path_copy.append(neighbor)
                 q.enqueue(path_copy)
+
+find_ladders("sail", "boat")
