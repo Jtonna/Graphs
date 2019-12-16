@@ -21,6 +21,7 @@ word_set = set()
 for word in words:
     word_set.add(word.lower())
 
+
 '''
 Given two wods (begin_word and end_word), and a dictionary's word list,
 return the shortest transformation sequence from being_word to end_word such that:
@@ -45,6 +46,17 @@ end_word = "boat"
 return ['sail', 'bail', 'boil', 'ball', 'bolt', 'boat']
 
 '''
+
+# Find Neighbor's
+def get_neighbors(word):
+    neighbors = []
+
+    # for each letter in the word
+        # for each letter in the alphabet
+            # change the word letter to the alphabet letter
+            # if the new word is in the word_set
+                # add it to neighbors
+    
 
 # 3 Steps
 # Build our graph
