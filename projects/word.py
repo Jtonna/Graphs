@@ -1,3 +1,5 @@
+import string
+
 # Create the queue
 class Queue():
     def __init__(self):
@@ -27,6 +29,7 @@ Given two wods (begin_word and end_word), and a dictionary's word list,
 return the shortest transformation sequence from being_word to end_word such that:
 Only one letter can be changed at a time
 Each Transformed word must exist in the word list
+Each transformed word must be the same length
 Note that begin_word is not a transformed word
 
 Note:
@@ -50,13 +53,21 @@ return ['sail', 'bail', 'boil', 'ball', 'bolt', 'boat']
 # Find Neighbor's
 def get_neighbors(word):
     neighbors = []
+    alphabet = list(string.ascii_lowercase)
 
     # for each letter in the word
+    for x in range(len(word)):
         # for each letter in the alphabet
-            # change the word letter to the alphabet letter
+        for letter in alphabet:
+            # change the word's letter to the alphabet's letter
+            list_word = list(word)
+            list_word[x] = letter
+            w = "".join(list_word)
             # if the new word is in the word_set
+            if w != word and w in word_set:
                 # add it to neighbors
-    
+                neighbors.append(w)
+    return neighbors
 
 # 3 Steps
 # Build our graph
@@ -91,3 +102,5 @@ def find_ladders(begin_word, end_word):
                 q.enqueue(path_copy)
 
 find_ladders("sail", "boat")
+get_neighbors("the")
+print("hello")
